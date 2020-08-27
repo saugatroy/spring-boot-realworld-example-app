@@ -32,6 +32,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import io.honeycomb.beeline.spring.beans.aspects.ChildSpan;
+
 @RestController
 @RequestMapping(path = "/articles/{slug}/comments")
 public class CommentsApi {
@@ -86,6 +88,7 @@ public class CommentsApi {
         }).orElseThrow(ResourceNotFoundException::new);
     }
 
+    @ChildSpan("Comment - Find Article")
     private Article findArticle(String slug) {
         return articleRepository.findBySlug(slug).map(article -> article).orElseThrow(ResourceNotFoundException::new);
     }

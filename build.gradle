@@ -55,6 +55,5 @@ dependencies {
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	testCompile('org.springframework.restdocs:spring-restdocs-mockmvc')
     testCompile('org.mybatis.spring.boot:mybatis-spring-boot-starter-test:1.3.2')
+	implementation 'io.honeycomb.beeline:beeline-spring-boot-starter:1.1.0'
 }
-
-implementation 'io.honeycomb.beeline:beeline-spring-boot-starter:1.1.0'

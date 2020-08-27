@@ -25,6 +25,8 @@ import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.Map;
 
+import io.honeycomb.beeline.spring.beans.aspects.ChildSpan;
+
 @RestController
 @RequestMapping(path = "/articles/{slug}")
 public class ArticleApi {
@@ -37,6 +39,7 @@ public class ArticleApi {
         this.articleRepository = articleRepository;
     }
 
+    @ChildSpan("Get Article")
     @GetMapping
     public ResponseEntity<?> article(@PathVariable("slug") String slug,
                                      @AuthenticationPrincipal User user) {

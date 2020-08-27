@@ -12,6 +12,8 @@ import java.util.UUID;
 import static java.util.stream.Collectors.toList;
 import static java.util.stream.Collectors.toSet;
 
+import io.honeycomb.beeline.spring.beans.aspects.ChildSpan;
+
 @Getter
 @NoArgsConstructor
 @EqualsAndHashCode(of = {"id"})
@@ -56,6 +58,7 @@ public class Article {
         this.updatedAt = new DateTime();
     }
 
+    @ChildSpan("Article Convert Title to URL")
     private String toSlug(String title) {
         return title.toLowerCase().replaceAll("[\\&|[\\uFE30-\\uFFA0]|\\’|\\”|\\s\\?\\,\\.]+", "-");
     }

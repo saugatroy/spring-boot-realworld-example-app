@@ -24,6 +24,8 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 import java.util.HashMap;
 
+import io.honeycomb.beeline.spring.beans.aspects.ChildSpan;
+
 @RestController
 @RequestMapping(path = "/articles")
 public class ArticlesApi {
@@ -56,6 +58,7 @@ public class ArticlesApi {
         }});
     }
 
+    @ChildSpan("Article Listing")
     @GetMapping(path = "feed")
     public ResponseEntity getFeed(@RequestParam(value = "offset", defaultValue = "0") int offset,
                                   @RequestParam(value = "limit", defaultValue = "20") int limit,
